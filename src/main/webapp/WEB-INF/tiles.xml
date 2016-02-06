@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+
+<tiles-definitions>
+
+	<definition name="base.definition" template="/views/tiles/layout.jsp">
+		<put-attribute name="header" value="/views/tiles/header.jsp"></put-attribute>
+		<put-attribute name="menu" value="/views/tiles/menu.jsp"></put-attribute>
+		<put-attribute name="body" value="/views/tiles/body.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="defaultPage" extends="base.definition">
+		<put-attribute name="body" value="/views/data-table.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="data-table" extends="base.definition">
+		<put-attribute name="body" value="/views/data-table.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="calendar" extends="base.definition">
+		<put-attribute name="body" value="/views/calendar.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="upload-file-result" extends="base.definition">
+		<put-attribute name="body" value="/views/file/upload-file-result.jsp"></put-attribute>
+	</definition>
+
+	<definition name="uplod-file-form" extends="base.definition">
+		<put-attribute name="body" value="/views/file/upoad-file-form.jsp"></put-attribute>
+	</definition>
+
+	<definition name="fields-info" extends="base.definition">
+		<put-attribute name="body" value="/views/field/field-info.jsp"></put-attribute>
+	</definition>
+
+<definition name="admin-panel" extends="base.definition">
+		<put-attribute name="body" value="/views/admin/admin-panel.jsp"></put-attribute>
+	</definition>
+
+
+
+</tiles-definitions>
+       

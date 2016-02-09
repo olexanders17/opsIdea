@@ -7,6 +7,7 @@ import ua.ak.domain.FieldOperation;
 import ua.ak.domain.Inputs;
 import ua.ak.utils.AllFieldsTableUtil;
 import ua.ak.utils.ExcelReader;
+import ua.ak.utils.dto.InputSumQAndAmount;
 
 public interface FieldOperationService {
 
@@ -39,5 +40,7 @@ public interface FieldOperationService {
 	void deleteAll();
 
 	void test();
+
+	List<InputSumQAndAmount> actBudOneField(String fieldCode);
 
 }

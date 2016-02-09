@@ -12,7 +12,7 @@ import ua.ak.dao.FieldOperationDao;
 import ua.ak.dao.FieldOperationDaoCustom;
 import ua.ak.domain.FieldOperation;
 
-public class FieldOperationDaoImpl implements FieldOperationDaoCustom {
+public class FieldOperationDaoImpl {
 
 //	@Autowired
 //	private FieldOperationDao dao;
@@ -29,7 +29,7 @@ public class FieldOperationDaoImpl implements FieldOperationDaoCustom {
 //	}
 //
 //	public FieldOperationDaoImpl() {
-//		// TODO Auto-generated constructor stub
+//
 //	}
 //
 	@Transactional

@@ -41,6 +41,9 @@ public interface FieldOperationService {
 
 	void test();
 
+	// returns actuals data for one field
 	List<InputSumQAndAmount> actBudOneField(String fieldCode);
 
+	//:todo remove
+	String findCropByCode(String fieldCode);
 }

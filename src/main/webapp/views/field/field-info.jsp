@@ -122,7 +122,7 @@
 
         </div>
 
-
+        <%--budget vs actuals--%>
         <div role="tabpanel" class="tab-pane " id="budget">
 
             <label>Summary crops 2015 , all data inc VAT</label>
@@ -146,16 +146,17 @@
                 <tbody>
                 <c:forEach var="ab" items="${actBudOneField}">
                     <tr>
-                    <td>${ab.inputName}</td>
-                    <td>${ab.qty}</td>
-                    <td>_______</td>
-                    <td>_______</td>
-                    <td>_______</td>
-                    <td>_______</td>
-                    <td><fmt:formatNumber value="${ab.amount}" type="number" maxFractionDigits="2"></fmt:formatNumber></td>
-                    <td>_______</td>
-                    <td>_______</td>
-                    <td>_______</td>
+                        <td>${ab.inputName}</td>
+                        <td>${ab.qty}</td>
+                        <td>_______</td>
+                        <td>_______</td>
+                        <td>_______</td>
+                        <td>_______</td>
+                        <td><fmt:formatNumber value="${ab.amount}" type="number"
+                                              maxFractionDigits="2"></fmt:formatNumber></td>
+                        <td>_______</td>
+                        <td>_______</td>
+                        <td>_______</td>
 
 
                     </tr>

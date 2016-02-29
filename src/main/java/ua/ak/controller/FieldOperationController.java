@@ -132,6 +132,12 @@ public class FieldOperationController {
         // budget actuals page
         model.addAttribute("actBudOneField", service.actBudOneField(fieldCode));
 
+        //actuals page
+        //System.out.println(service.findCropByCode(fieldCode));
+        String CropByCode = service.findCropByCode(fieldCode);
+
+        //find budget data
+
 
         return "fields-info";
 

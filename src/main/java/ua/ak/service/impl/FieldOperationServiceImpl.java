@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import ua.ak.dao.FieldOperationDao;
 import ua.ak.dao.FieldOperationDaoCustom;
+import ua.ak.dao.InputsBudgetDaoCustom;
 import ua.ak.dao.InputsDao;
 import ua.ak.domain.FieldOperation;
 import ua.ak.domain.Inputs;
@@ -17,6 +18,8 @@ import ua.ak.service.FieldOperationService;
 import ua.ak.utils.AllFieldsTableUtil;
 import ua.ak.utils.AmountsForFieldOperations;
 import ua.ak.utils.ExcelReaderSingleColumn;
+import ua.ak.utils.databaseUtils.BudgetActualPairs;
+import ua.ak.utils.databaseUtils.GeneralCropInfo;
 import ua.ak.utils.dto.InputSumQAndAmount;
 import ua.ak.utils.dto.InputTypeAmount;
 
@@ -33,6 +36,9 @@ public class FieldOperationServiceImpl implements FieldOperationService {
 
     @Autowired
     private AmountsForFieldOperations afo;
+
+    @Autowired
+    private InputsBudgetDaoCustom inputsBudgetDaoCustom;
 
     @Autowired
     private FieldOperationDaoCustom fieldOperationDaoCustom;
@@ -81,6 +87,15 @@ public class FieldOperationServiceImpl implements FieldOperationService {
 
     public void setDao(FieldOperationDao dao) {
         this.dao = dao;
+    }
+
+
+    public FieldOperationDaoCustom getFieldOperationDaoCustom() {
+        return fieldOperationDaoCustom;
+    }
+
+    public void setFieldOperationDaoCustom(FieldOperationDaoCustom fieldOperationDaoCustom) {
+        this.fieldOperationDaoCustom = fieldOperationDaoCustom;
     }
 
     // Just only load
@@ -177,8 +192,29 @@ public class FieldOperationServiceImpl implements FieldOperationService {
     public List<InputSumQAndAmount> actBudOneField(String fieldCode) {
         //TODO: sort and clean
 
-        List<InputSumQAndAmount> inputSumQAndAmountList = fieldOperationDaoCustom.SumQAndAmount(fieldCode);
-        return inputSumQAndAmountList;
+        // for actuals
+        List<InputSumQAndAmount> actualsInputSumQAndAmountList = fieldOperationDaoCustom.SumQAndAmount(fieldCode);
+
+
+        //for budget
+        String cropInActualsFormat = findCropByCode(fieldCode);
+        String cropInBudgetFormat = GeneralCropInfo.getInstance().getBudgetNameByActualName(cropInActualsFormat);
+        //to transfer in budget format
+        List<InputSumQAndAmount> budgetInputSumQAndAmountList = inputsBudgetDaoCustom.SumQAndAmount(cropInBudgetFormat);
+        System.out.println(" 1 .budgetInputSumQAndAmountList = " + budgetInputSumQAndAmountList);
+
+
+
+
+
+        return actualsInputSumQAndAmountList;
+    }
+
+    //:todo remove
+    @Override
+    public String findCropByCode(String fieldCode) {
+        return fieldOperationDaoCustom.findCropByField(fieldCode);
+
     }
 
 

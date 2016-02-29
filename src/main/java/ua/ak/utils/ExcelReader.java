@@ -64,6 +64,7 @@ public class ExcelReader {
 	private final int ROW_HEADER = 1;
 	private final int MAX_ROW_FROM_EXCEL = 20000;
 
+	@Deprecated
 	public ExcelReader(String FILE_NAME) {
 		this.FILE_NAME=FILE_NAME;
 	}

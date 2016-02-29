@@ -30,6 +30,10 @@ public class InputsBudget {
 	@Column(name = "INPUT_BUDGET_NAME")
 	String inputBudgetName;
 
+	@Column(name = "INPUT_BUDGET_TYPE")
+	String inputBudgetType;
+
+
 	@Column(name = "NORM_PER_HA")
 	Double normPerHa;
 
@@ -52,4 +56,115 @@ public class InputsBudget {
 	@Column(name = "DIESEL_TOTAL_UAH")
 	Double dieselTotalUah;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getСropName() {
+		return сropName;
+	}
+
+	public void setСropName(String сropName) {
+		this.сropName = сropName;
+	}
+
+	public Double getTotalHa() {
+		return totalHa;
+	}
+
+	public void setTotalHa(Double totalHa) {
+		this.totalHa = totalHa;
+	}
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public Date getActivityDate() {
+		return activityDate;
+	}
+
+	public void setActivityDate(Date activityDate) {
+		this.activityDate = activityDate;
+	}
+
+	public String getInputBudgetName() {
+		return inputBudgetName;
+	}
+
+	public void setInputBudgetName(String inputBudgetName) {
+		this.inputBudgetName = inputBudgetName;
+	}
+
+	public String getInputBudgetType() {
+		return inputBudgetType;
+	}
+
+	public void setInputBudgetType(String inputBudgetType) {
+		this.inputBudgetType = inputBudgetType;
+	}
+
+	public Double getNormPerHa() {
+		return normPerHa;
+	}
+
+	public void setNormPerHa(Double normPerHa) {
+		this.normPerHa = normPerHa;
+	}
+
+	public Double getUsedHectars() {
+		return usedHectars;
+	}
+
+	public void setUsedHectars(Double usedHectars) {
+		this.usedHectars = usedHectars;
+	}
+
+	public Double getInputQuantityTotal() {
+		return inputQuantityTotal;
+	}
+
+	public void setInputQuantityTotal(Double inputQuantityTotal) {
+		this.inputQuantityTotal = inputQuantityTotal;
+	}
+
+	public Double getInputAmountTotal() {
+		return inputAmountTotal;
+	}
+
+	public void setInputAmountTotal(Double inputAmountTotal) {
+		this.inputAmountTotal = inputAmountTotal;
+	}
+
+	public Double getDieselNormPerHa() {
+		return dieselNormPerHa;
+	}
+
+	public void setDieselNormPerHa(Double dieselNormPerHa) {
+		this.dieselNormPerHa = dieselNormPerHa;
+	}
+
+	public Double getDIESEL_TOTAL_QUANTITY() {
+		return DIESEL_TOTAL_QUANTITY;
+	}
+
+	public void setDIESEL_TOTAL_QUANTITY(Double DIESEL_TOTAL_QUANTITY) {
+		this.DIESEL_TOTAL_QUANTITY = DIESEL_TOTAL_QUANTITY;
+	}
+
+	public Double getDieselTotalUah() {
+		return dieselTotalUah;
+	}
+
+	public void setDieselTotalUah(Double dieselTotalUah) {
+		this.dieselTotalUah = dieselTotalUah;
+	}
 }

@@ -1,13 +1,10 @@
 package ua.ak.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import ua.ak.domain.FieldOperation;
-import ua.ak.domain.Inputs;
 import ua.ak.utils.AllFieldsTableUtil;
-import ua.ak.utils.ExcelReader;
-import ua.ak.utils.dto.InputSumQAndAmount;
+import ua.ak.utils.dto.InputSumQAndAmountActBudDTO;
 
 public interface FieldOperationService {
 
@@ -42,7 +39,9 @@ public interface FieldOperationService {
 	void test();
 
 	// returns actuals data for one field
-	List<InputSumQAndAmount> actBudOneField(String fieldCode);
+	List<InputSumQAndAmountActBudDTO> actBudOneField(String fieldCode);
+
+	List<InputSumQAndAmountActBudDTO> actBudOneFieldPerHa(String fieldCode);
 
 	//:todo remove
 	String findCropByCode(String fieldCode);

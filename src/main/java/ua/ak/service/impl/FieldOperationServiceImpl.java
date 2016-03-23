@@ -2,34 +2,30 @@ package ua.ak.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ua.ak.dao.FieldOperationDao;
-import ua.ak.dao.FieldOperationDaoCustom;
-import ua.ak.dao.InputsBudgetDaoCustom;
-import ua.ak.dao.InputsDao;
+import ua.ak.dao.*;
 import ua.ak.domain.FieldOperation;
+import ua.ak.domain.FieldProfile;
 import ua.ak.domain.Inputs;
 import ua.ak.service.FieldOperationService;
 import ua.ak.utils.AllFieldsTableUtil;
 import ua.ak.utils.AmountsForFieldOperations;
 import ua.ak.utils.ExcelReaderSingleColumn;
-import ua.ak.utils.databaseUtils.BudgetActualPairs;
 import ua.ak.utils.databaseUtils.GeneralCropInfo;
 import ua.ak.utils.dto.InputSumQAndAmount;
-import ua.ak.utils.dto.InputTypeAmount;
-
-import javax.persistence.Query;
+import ua.ak.utils.dto.InputSumQAndAmountActBudDTO;
 
 @Service()
 public class FieldOperationServiceImpl implements FieldOperationService {
 
     @Autowired
     private FieldOperationDao dao;
+    @Autowired
+    private FieldProfileDao fieldProfileDao;
 
     @Autowired
     private InputsDao daoInputs;
@@ -89,6 +85,14 @@ public class FieldOperationServiceImpl implements FieldOperationService {
         this.dao = dao;
     }
 
+
+    public FieldProfileDao getFieldProfileDao() {
+        return fieldProfileDao;
+    }
+
+    public void setFieldProfileDao(FieldProfileDao fieldProfileDao) {
+        this.fieldProfileDao = fieldProfileDao;
+    }
 
     public FieldOperationDaoCustom getFieldOperationDaoCustom() {
         return fieldOperationDaoCustom;
@@ -150,7 +154,7 @@ public class FieldOperationServiceImpl implements FieldOperationService {
         }
     }
 
-    @Override
+
     @Deprecated
     public List<AllFieldsTableUtil> ActBudgetAllfields() {
 
@@ -182,35 +186,60 @@ public class FieldOperationServiceImpl implements FieldOperationService {
     @Override
     public void test() {
         System.out.println("METHOD TEST");
-        // FieldOperationDaoImpl2 dao2 = new FieldOperationDaoImpl2();
-        //
-        // System.out.println(dao2.findData());
+        FieldProfile fieldProfile = fieldProfileDao.findOne(189L);
+
+        System.out.println("!!!dao = " + fieldProfile);
+
 
     }
 
 
-    public List<InputSumQAndAmount> actBudOneField(String fieldCode) {
+    public List<InputSumQAndAmountActBudDTO> actBudOneField(String fieldCode) {
         //TODO: sort and clean
 
         // for actuals
         List<InputSumQAndAmount> actualsInputSumQAndAmountList = fieldOperationDaoCustom.SumQAndAmount(fieldCode);
 
-
+        System.out.println(" 2 .actualsInputSumQAndAmountList = " + actualsInputSumQAndAmountList);
         //for budget
-        String cropInActualsFormat = findCropByCode(fieldCode);
+        String cropInActualsFormat = findCropByCode(fieldCode); //get crop in actual format
+
+        //TODO: add year
         String cropInBudgetFormat = GeneralCropInfo.getInstance().getBudgetNameByActualName(cropInActualsFormat);
+
+
         //to transfer in budget format
         List<InputSumQAndAmount> budgetInputSumQAndAmountList = inputsBudgetDaoCustom.SumQAndAmount(cropInBudgetFormat);
+
         System.out.println(" 1 .budgetInputSumQAndAmountList = " + budgetInputSumQAndAmountList);
 
+        //get soted DTO to fill field profile actuals budget comparsion
+        List<InputSumQAndAmountActBudDTO> rezult = GeneralCropInfo.getInstance().sortOnSceleton(actualsInputSumQAndAmountList, budgetInputSumQAndAmountList);
+
+        System.out.println("FieldOperationServiceImpl.actBudOneField");
+        System.out.println("rez = " + rezult);
 
 
-
-
-        return actualsInputSumQAndAmountList;
+        return rezult;
     }
 
-    //:todo remove
+
+    @Override
+    public List<InputSumQAndAmountActBudDTO> actBudOneFieldPerHa(String fieldCode) {
+
+
+        List<InputSumQAndAmount> actualsInputSumQAndAmountList = fieldOperationDaoCustom.SumQAndAmount(fieldCode);
+
+        String cropInActualsFormat = findCropByCode(fieldCode); //get crop in actual format
+        String cropInBudgetFormat = GeneralCropInfo.getInstance().getBudgetNameByActualName(cropInActualsFormat);
+
+        List<InputSumQAndAmount> budgetInputSumQAndAmountList = inputsBudgetDaoCustom.SumQAndAmountPerHa(cropInBudgetFormat);
+        List<InputSumQAndAmountActBudDTO> result = GeneralCropInfo.getInstance().sortOnSceleton(actualsInputSumQAndAmountList, budgetInputSumQAndAmountList);
+
+        return result;
+    }
+
+
     @Override
     public String findCropByCode(String fieldCode) {
         return fieldOperationDaoCustom.findCropByField(fieldCode);

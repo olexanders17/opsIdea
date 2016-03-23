@@ -8,6 +8,7 @@ import javax.naming.event.ObjectChangeListener;
 import ua.ak.domain.FieldOperation;
 
 // use building patterns
+@Deprecated
 public class FiledProfileActBudDTO {
 
 	List<VariancesActBud> listItems; // clas to fill jsp

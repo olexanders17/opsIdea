@@ -38,7 +38,6 @@ public class InputsBudgetDaoCustomImpl implements InputsBudgetDaoCustom {
     @Override
     @Transactional
     public List<InputSumQAndAmount> SumQAndAmount(String cropNameInBudgetFormat) {
-        cropNameInBudgetFormat = "(Crops) Winter wheat 2016";// to cahnge !!!
         String str = "select ib.inputBudgetType , sum (ib.inputQuantityTotal), sum (ib.inputAmountTotal) from INPUTS_BUDGET ib where ib.сropName=:cropNameInBudgetFormat group by ib.inputBudgetType";
         Query query = em.createQuery(str).setParameter("cropNameInBudgetFormat", cropNameInBudgetFormat);
 
@@ -50,10 +49,35 @@ public class InputsBudgetDaoCustomImpl implements InputsBudgetDaoCustom {
                 listBudgetInputSumQAndAmounts.add(new InputSumQAndAmount((String) row[0], (Double) row[1], (Double) row[2]));
             }
         }
-
-
-
         return listBudgetInputSumQAndAmounts;
     }
+
+    @Override
+    public List<InputSumQAndAmount> SumQAndAmountPerHa(String cropNameInBudgetFormat) {
+        String str = "select ib.inputBudgetType , sum (ib.inputQuantityPerTotalHa), sum (ib.inputAmountPerTotalHa) from INPUTS_BUDGET ib where ib.сropName=:cropNameInBudgetFormat group by ib.inputBudgetType";
+        Query query = em.createQuery(str).setParameter("cropNameInBudgetFormat", cropNameInBudgetFormat);
+
+        List<InputSumQAndAmount> listBudgetInputSumQAndAmounts = new ArrayList<InputSumQAndAmount>();
+        for (Iterator it = query.getResultList().iterator(); it.hasNext(); ) {
+            Object[] row = (Object[]) it.next();
+            String line = (String) row[0];
+            if (line != null && !line.equals("")) {
+                listBudgetInputSumQAndAmounts.add(new InputSumQAndAmount((String) row[0], (Double) row[1], (Double) row[2]));
+            }
+        }
+        return listBudgetInputSumQAndAmounts;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

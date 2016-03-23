@@ -1,0 +1,1 @@
+SELECT coalesce( DIESEL_NORM_PER_HA,0) FROM inputs_budget

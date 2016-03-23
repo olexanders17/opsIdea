@@ -18,6 +18,7 @@
 
 		<form action="fieldsInfo" method="post">
             Chose Field >> <select style="color: black;" name="fieldCode">
+            <option>select</option>
             <c:forEach var="t" items="${fieldProfileList}">
                 <option>${t.fieldСode}</option>
             </c:forEach>
@@ -52,7 +53,7 @@
 
     <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane active" id="generalInfo">
+        <div role="tabpanel" class="tab-pane active " id="generalInfo">
             <br>
             <p>Table 1. Field info</p>
             <table class="table table-condensed">
@@ -123,22 +124,69 @@
         </div>
 
         <%--budget vs actuals--%>
-        <div role="tabpanel" class="tab-pane " id="budget">
+        <div role="tabpanel" class="tab-pane  " id="budget">
 
+            <%--cost per HA begin--%>
+                <label>Summary crops 2015 cosr per HA , all data exc VAT</label>
+                <table class="table table-striped table-bordered  ">
+                    <thead style="">
+                    <tr style="font-weight: bold">
+                        <td>Type of Inputs</td>
+                        <td>Total Q-TY Actuals </td>
+                        <td>Total Q-TY Budget </td>
+                        <td>Var Q-TY AvB over(under) budget</td>
+                        <td>___</td>
+
+                        <td>Total USD Actuals </td>
+                        <td>Total USD Budget </td>
+                        <td>Var USD Budget over(under) budget </td>
+                        <td>___</td>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    <c:forEach var="ab" items="${actBudOneFieldPerHA}">
+                        <tr>
+                            <td> ${ab.budgetInputName} </td>
+                            <td><fmt:formatNumber value="${ab.actualsQty}" type="number" maxFractionDigits="1"></fmt:formatNumber>  </td>
+                            <td><fmt:formatNumber value="${ab.budgetQty}" type="number" maxFractionDigits="1"></fmt:formatNumber>   </td>
+                            <td><fmt:formatNumber value="${ab.actualsQty-ab.budgetQty}" type="number" maxFractionDigits="2"></fmt:formatNumber>      </td>
+
+                            <td>  </td>
+                            <td> <fmt:formatNumber value="${ab.actualsAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber> </td>
+                            <td> <fmt:formatNumber value="${ab.budgetAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber>  </td>
+                            <td> <fmt:formatNumber value="${ab.actualsAmount-ab.budgetAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber>  </td>
+                            <td></td>
+
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+
+
+                </table>
+
+
+
+            <%--cost per HA end--%>
+
+            <br><br>
             <label>Summary crops 2015 , all data inc VAT</label>
             <table class="table table-striped table-bordered  ">
                 <thead style="">
-                <tr>
+                <tr style="font-weight: bold">
                     <td>Type of Inputs</td>
-                    <td>Total Q-TY Actuals H2 2015</td>
-                    <td>Total Q-TY Budget H2 2015</td>
-                    <td>Var Q-TY AvB H2 2015 over(under) budget</td>
-                    <td>Var % (by group)</td>
-                    <td style="width: 10px;"></td>
-                    <td>Total USD Actuals H2 2015</td>
-                    <td>Total USD Budget H2 2015</td>
-                    <td>Var USD AvB H2 2015 over(under) budget</td>
-                    <td>Var % (by group)</td>
+                    <td>Total Q-TY Actuals </td>
+                    <td>Total Q-TY Budget </td>
+                    <td>Var Q-TY AvB over(under) budget</td>
+                    <td>___</td>
+
+                    <td>Total USD Actuals </td>
+                    <td>Total USD Budget </td>
+                    <td>Var USD Budget over(under) budget </td>
+                    <td>___</td>
+
                 </tr>
 
                 </thead>
@@ -146,18 +194,16 @@
                 <tbody>
                 <c:forEach var="ab" items="${actBudOneField}">
                     <tr>
-                        <td>${ab.inputName}</td>
-                        <td>${ab.qty}</td>
-                        <td>_______</td>
-                        <td>_______</td>
-                        <td>_______</td>
-                        <td>_______</td>
-                        <td><fmt:formatNumber value="${ab.amount}" type="number"
-                                              maxFractionDigits="2"></fmt:formatNumber></td>
-                        <td>_______</td>
-                        <td>_______</td>
-                        <td>_______</td>
+                        <td> ${ab.budgetInputName} </td>
+                        <td><fmt:formatNumber value="${ab.actualsQty}" type="number" maxFractionDigits="1"></fmt:formatNumber>  </td>
+                        <td><fmt:formatNumber value="${ab.budgetQty}" type="number" maxFractionDigits="1"></fmt:formatNumber>   </td>
+                        <td><fmt:formatNumber value="${ab.actualsQty-ab.budgetQty}" type="number" maxFractionDigits="2"></fmt:formatNumber>      </td>
 
+                        <td>  </td>
+                        <td> <fmt:formatNumber value="${ab.actualsAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber> </td>
+                        <td> <fmt:formatNumber value="${ab.budgetAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber>  </td>
+                        <td> <fmt:formatNumber value="${ab.actualsAmount-ab.budgetAmount}" type="number" maxFractionDigits="2"></fmt:formatNumber>  </td>
+                        <td></td>
 
                     </tr>
                 </c:forEach>

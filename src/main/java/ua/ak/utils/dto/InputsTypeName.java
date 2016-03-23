@@ -1,5 +1,7 @@
 package ua.ak.utils.dto;
 
+
+@Deprecated
 public class InputsTypeName {
 
 	private String InputsTypeName;

@@ -6,9 +6,9 @@ package ua.ak.utils.dto;
 //use for actuals- budget proforma
 public class InputSumQAndAmount {
 
-    String inputName;
-    Double qty;
-    Double amount;
+    private String inputName;
+    private Double qty;
+    private Double amount;
 
 
     public InputSumQAndAmount(String inputName, Double qty, Double amount) {

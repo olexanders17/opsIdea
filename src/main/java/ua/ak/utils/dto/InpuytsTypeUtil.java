@@ -3,6 +3,7 @@ package ua.ak.utils.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class InpuytsTypeUtil {
 
 	private List<InputsTypeName> inputsTypeList;

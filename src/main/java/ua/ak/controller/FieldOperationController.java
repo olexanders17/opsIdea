@@ -119,21 +119,27 @@ public class FieldOperationController {
     public String fieldsInfo(Model model,
                              @RequestParam(required = false) String fieldCode) {
 
+        /*field profile */
         FieldProfile fieldProfile = fieldProfileService.findByCode(fieldCode);
 
         model.addAttribute("fieldProfile", fieldProfile);
         model.addAttribute("fieldProfileList", fieldProfileService.getAll());
+
+        /*crop fotation */
         model.addAttribute("yieldHistoryList", yieldHistoryService.getByFieldCode(fieldCode));
 
-        for (YieldHistory it : yieldHistoryService.getByFieldCode(fieldCode)) {
-            System.out.println(it);
-        }
 
-        // budget actuals page
+        /* budget actuals page*/
+       //cost per ha
+
+        model.addAttribute("actBudOneFieldPerHA",service.actBudOneFieldPerHa(fieldCode));
+
+
+
+        //actuals
         model.addAttribute("actBudOneField", service.actBudOneField(fieldCode));
 
         //actuals page
-        //System.out.println(service.findCropByCode(fieldCode));
         String CropByCode = service.findCropByCode(fieldCode);
 
         //find budget data

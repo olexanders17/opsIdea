@@ -53,8 +53,24 @@ public class InputsBudget {
 	@Column(name = "DIESEL_TOTAL_QUANTITY")
 	Double DIESEL_TOTAL_QUANTITY; 
 	
-	@Column(name = "DIESEL_TOTAL_UAH")
-	Double dieselTotalUah;
+	@Column(name = "DIESEL_TOTAL")
+	Double dieselTotal;
+
+
+	@Column(name = "INPUT_QUANTITY_PER_TOTAL_HA")
+	Double inputQuantityPerTotalHa;
+
+
+	@Column(name = "INPUT_AMOUNT_PER_TOTAL_HA")
+	Double inputAmountPerTotalHa;
+
+	@Column(name = "DIESEL_QUANTITY_PER_TOTAL_HA")
+	Double dieselQuantityPerTotalHa;
+
+	@Column(name = "DIESEL_AMOUNT_PER_TOTAL_HA")
+	Double dieselAmountPerTotalHa;
+
+
 
 	public long getId() {
 		return id;
@@ -160,11 +176,36 @@ public class InputsBudget {
 		this.DIESEL_TOTAL_QUANTITY = DIESEL_TOTAL_QUANTITY;
 	}
 
-	public Double getDieselTotalUah() {
-		return dieselTotalUah;
+	public Double getDieselTotal() {
+		return dieselTotal;
 	}
 
-	public void setDieselTotalUah(Double dieselTotalUah) {
-		this.dieselTotalUah = dieselTotalUah;
+	public void setDieselTotal(Double dieselTotalUah) {
+		this.dieselTotal = dieselTotalUah;
+	}
+
+
+	public Double getInputQuantityPerTotalHa() {
+		return inputQuantityPerTotalHa;
+	}
+
+	public void setInputQuantityPerTotalHa(Double inputQuantityPerTotalHa) {
+		this.inputQuantityPerTotalHa = inputQuantityPerTotalHa;
+	}
+
+	public Double getDieselAmountPerTotalHa() {
+		return dieselAmountPerTotalHa;
+	}
+
+	public void setDieselAmountPerTotalHa(Double dieselAmountPerTotalHa) {
+		this.dieselAmountPerTotalHa = dieselAmountPerTotalHa;
+	}
+
+	public Double getInputAmountPerTotalHa() {
+		return inputAmountPerTotalHa;
+	}
+
+	public void setInputAmountPerTotalHa(Double inputAmountPerTotalHa) {
+		this.inputAmountPerTotalHa = inputAmountPerTotalHa;
 	}
 }

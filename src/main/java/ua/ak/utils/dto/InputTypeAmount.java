@@ -3,6 +3,7 @@ package ua.ak.utils.dto;
 /**
  * Created by Adm on 07.02.2016.
  */
+@Deprecated
 public class InputTypeAmount {
 
     public String inputTypeBudget;

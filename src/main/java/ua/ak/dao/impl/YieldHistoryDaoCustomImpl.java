@@ -20,13 +20,13 @@ public class YieldHistoryDaoCustomImpl implements YieldHistoryDaoCustom {
 		return em;
 	}
 
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
+public void setEm(EntityManager em) {
+	this.em = em;
+}
 
 	@Override
 	public List<YieldHistory> findByCode(String fieldCode) {
-		
+
 		return (List<YieldHistory>) em.createQuery("select yh from YIELD_HISTORY as yh where yh.fieldCode ='" + fieldCode + "'").getResultList();
 	}
 

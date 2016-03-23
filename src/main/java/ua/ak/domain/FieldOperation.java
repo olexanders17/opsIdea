@@ -2,11 +2,7 @@ package ua.ak.domain;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "FIELD_OPERATION")
 public class FieldOperation {
@@ -72,44 +68,10 @@ public class FieldOperation {
 	@Column(name = "INPUT_TYPE_BUDGET")
 	private String inputTypeBudget;
 
-	////////////////////////
+/*	@ManyToOne(fetch = FetchType.EAGER )
+	@JoinColumn(name = "some_id")
+	FieldProfile fieldProfile;*/
 
-	// @Column(name = "FERTILIZER_NAME")
-	// private String fertilizerName;
-	//
-	// @Column(name = "FERTILIZER_USAGE_QTY")
-	// private double fertilizerUsageQty;
-	//
-	// @Column(name = "CHEMICALS_NAME")
-	// private String chemicalsName;
-	//
-	// @Column(name = "CHEMICALS_USAGE_QTY")
-	// private double chemicalsUsageQty;
-	//
-	//
-	//
-
-	//
-	// @Column(name = "FERTILIZER_AMOUNT")
-	// private double fertilizerAmount;
-	//
-	// @Column(name = "CHEMICALS_AMOUNT")
-	// private double chemicalsAmount;
-	//
-	//
-	// @Column(name = "CHEMICALS_NAME_BUDGET")
-	// private String chemicalNameBudget;
-	//
-	// @Column(name = "CHEMICALS_TYPE_BUDGET")
-	// private String chemicalTypeBudget;
-	//
-	// @Column(name = "FERTILIZER_NAME_BUDGET")
-	// private String fertilizerlNameBudget;
-	//
-	// @Column(name = "FERTILIZER_TYPE_BUDGET")
-	// private String fertilizerlTypeBudget;
-
-	////////////////////////////////////
 
 	public long getId() {
 		return id;

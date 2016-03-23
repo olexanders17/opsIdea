@@ -12,4 +12,6 @@ public interface InputsBudgetDaoCustom {
 
     @Transactional
     List<InputSumQAndAmount> SumQAndAmount(String cropNameInBudgetFormat);
+
+    List<InputSumQAndAmount> SumQAndAmountPerHa(String cropNameInBudgetFormat);
 }

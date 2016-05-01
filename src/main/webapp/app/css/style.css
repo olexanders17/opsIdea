@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #67b168;
+    border-radius: 0px;
+}
+
+.sidebar-header {
+    text-align: center;
+}
+
+.panel-info {
+    background-color: #f9f9f9;
+}
+
+.panel-info > .panel-heading {
+    background-color: #67b168;
+    color: white;
+}
+
+.panel-info ul li {
+    background-color: honeydew;
+}
+#choseField {
+
+}
+.wrapper {
+    clear: both;
+}

@@ -10,19 +10,19 @@ public class FieldProfile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "FIELD_CODE")
-    String fieldСode;
+    @Column(/*name = "FIELD_CODE"*/)
+    String fieldCode;
 
-    @Column(name = "FIELD_AREA")
+    @Column(/*name = "FIELD_AREA"*/)
     String fieldArea;
 
-    @Column(name = "OBLAST")
+    @Column(/*name = "OBLAST"*/)
     String oblast;
 
-    @Column(name = "RAIJON")
+    @Column(/*name = "RAIJON"*/)
     String raijon;
 
-    @Column(name = "VILLAGE")
+    @Column(/*name = "VILLAGE"*/)
     String village;
 
    /* @OneToMany(fetch = FetchType.EAGER, mappedBy = "fieldProfile")
@@ -41,11 +41,11 @@ public class FieldProfile {
     }
 
     public String getFieldСode() {
-        return fieldСode;
+        return fieldCode;
     }
 
     public void setFieldСode(String fieldСode) {
-        this.fieldСode = fieldСode;
+        this.fieldCode = fieldСode;
     }
 
     public String getFieldArea() {
@@ -84,7 +84,7 @@ public class FieldProfile {
     public String toString() {
         return "FieldProfile{" +
                 "id=" + id +
-                ", fieldСode='" + fieldСode + '\'' +
+                ", fieldСode='" + fieldCode + '\'' +
                 ", fieldArea='" + fieldArea + '\'' +
                 ", oblast='" + oblast + '\'' +
                 ", raijon='" + raijon + '\'' +

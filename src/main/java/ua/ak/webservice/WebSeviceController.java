@@ -10,29 +10,29 @@ import ua.ak.dao.FieldOperationDao;
 @RestController
 public class WebSeviceController {
 
-	public WebSeviceController() {
-	
-	}
+    public WebSeviceController() {
 
-	@Autowired
-	FieldOperationDao dao;
+    }
 
-	public FieldOperationDao getDao() {
-		return dao;
-	}
+    @Autowired
+    FieldOperationDao dao;
 
-	public void setDao(FieldOperationDao dao) {
-		this.dao = dao;
-	}
+    public FieldOperationDao getDao() {
+        return dao;
+    }
 
-	@RequestMapping(value = "/folist")
-	public FieldOperationWSDto getAllfieldsOperstions() {
+    public void setDao(FieldOperationDao dao) {
+        this.dao = dao;
+    }
 
-		FieldOperationWSDto fo = new FieldOperationWSDto();
-		fo.list = dao.findAll();
+    @RequestMapping(value = "/folist")
+    public FieldOperationWSDto getAllfieldsOperstions() {
 
-		return fo;
+        FieldOperationWSDto fo = new FieldOperationWSDto();
+        fo.list = dao.findAll();
 
-	}
+        return fo;
+
+    }
 
 }

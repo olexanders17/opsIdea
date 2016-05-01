@@ -4,6 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import ua.ak.domain.FieldOperation;
 
-public interface FieldOperationDao extends JpaRepository<FieldOperation,Long>    {
+import java.util.List;
+import java.util.Optional;
+
+public interface FieldOperationDao extends JpaRepository<FieldOperation, Long> {
+    //check something
+    List<FieldOperation> findByFieldCode(String fieldCode);
 
 }

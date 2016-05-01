@@ -1,3 +1,4 @@
+/*
 package ua.ak.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,3 +35,4 @@ public class FieldProfileDaoCustomImpl implements FieldProfileDaoCustom {
     }
 
 }
+*/

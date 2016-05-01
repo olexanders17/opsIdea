@@ -12,36 +12,46 @@ import ua.ak.service.FieldProfileService;
 @Service
 public class FieldProfileServiceImpl implements FieldProfileService {
 
-	@Autowired
-	private FieldProfileDao dao;
+    @Autowired
+    private FieldProfileDao dao;
 
-	public FieldProfileDao getDao() {
-		return dao;
-	}
+    public FieldProfileDao getDao() {
+        return dao;
+    }
 
-	public void setDao(FieldProfileDao dao) {
-		this.dao = dao;
-	}
+    public void setDao(FieldProfileDao dao) {
+        this.dao = dao;
+    }
 
-	@Override
-	public List<FieldProfile> getAll() {
-		return dao.findAll();
+    @Override
+    public List<FieldProfile> getAll() {
+        return dao.findAll();
 
-	}
+    }
 
-	@Override
-	public FieldProfile findByCode(String code) {
-		FieldProfile fieldProfile = null;
-		List<FieldProfile> fieldProfileList = dao.findAll();
+    @Override
+    public FieldProfile findByCode(String code) {
+        FieldProfile fieldProfile = null;
+        List<FieldProfile> fieldProfileList = dao.findAll();
 
-		for (FieldProfile fp : fieldProfileList) {
-			if (fp.getFieldСode().equals(code)) {
-				fieldProfile = fp;
-			}
+        for (FieldProfile fp : fieldProfileList) {
+            if (fp.getFieldСode().equals(code)) {
+                fieldProfile = fp;
+            }
 
-		}
+        }
 
-		return fieldProfile;
-	}
+        return fieldProfile;
+    }
+
+
+    @Override
+    public List<FieldProfile> getAllLikeFieldCode(String fieldCode) {
+
+        String oblsat=fieldCode;
+        return dao.findByFieldCodeOrVillageContains(fieldCode,oblsat);
+
+    }
+
 
 }
